@@ -11,6 +11,7 @@ public class LevelGenerator : MonoBehaviour
     public List<BasePlatform> activePlatforms;
     public List<GameObject> activeBalls;
     public Transform player;
+    private Saveobjects Save;
 
     [Header("Platforms")]
     public BasePlatform StraightPlatform;
@@ -20,8 +21,10 @@ public class LevelGenerator : MonoBehaviour
     [Header("Balls")]
     public GameObject StraightBall;
     public GameObject ArrowHeadBalls;
-    private void Awake()
+    private void Start()
     {
+        Save = SaveManager.Load();
+        ActiveScene = Save.Level;
         levelIndicator.SetLevel(ActiveScene);
         lvlManager = GetComponent<LevelManager>();
         data = lvlManager.GetLevel(ActiveScene);
@@ -115,6 +118,8 @@ public class LevelGenerator : MonoBehaviour
     public void NextLevel()
     {
         ActiveScene++;
+        Save.Level = ActiveScene;
+        SaveManager.Save(Save);
         levelIndicator.ResetLevel();
         levelIndicator.SetLevel(ActiveScene);
         int sceneCount = ActiveScene % 2;

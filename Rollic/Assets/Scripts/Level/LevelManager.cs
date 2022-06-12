@@ -5,9 +5,9 @@ using UnityEngine;
 public class LevelManager : MonoBehaviour
 {
     public LevelData[] levels;
-
+    private int LevelCount = 2;
     public LevelData GetLevel(int index)
     {
-        return levels[index];
+        return levels[index % LevelCount];
     }
 }

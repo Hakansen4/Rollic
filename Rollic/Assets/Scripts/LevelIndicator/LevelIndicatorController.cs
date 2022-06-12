@@ -32,6 +32,7 @@ public class LevelIndicatorController : MonoBehaviour
     }
     public void SetLevel(int level)
     {
+        level++;
         CurrentLevel.text = level.ToString();
         level++;
         NextLevel.text = level.ToString();
