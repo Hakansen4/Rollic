@@ -6,7 +6,7 @@ public class FinalPlatform : BasePlatform
 {
     public override PlatformType _PlatformType => PlatformType.Final;
     private GameObject CompletedScreen;
-    private void Awake()
+    private void Start()
     {
         CompletedScreen = GameObject.FindGameObjectWithTag("CompletedScreen");
         CompletedScreen.SetActive(false);

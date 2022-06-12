@@ -13,6 +13,7 @@ public class PlatformChallengeController : MonoBehaviour
     public Material _groundColor;
 
     private GameObject failedScreen;
+    private LevelIndicatorController levelIndicator;
     bool challengeStarted;
     bool challengeFinished;
     float timer;
@@ -22,6 +23,7 @@ public class PlatformChallengeController : MonoBehaviour
     {
         chPlatform = GetComponentInParent<ChallengePlatform>();
         failedScreen = GameObject.FindGameObjectWithTag("FailedScreen");
+        levelIndicator = GameObject.FindGameObjectWithTag("LevelIndicator").GetComponent<LevelIndicatorController>();
         challengeStarted = false;
         challengeFinished = false;
         timer = 0;
@@ -82,6 +84,7 @@ public class PlatformChallengeController : MonoBehaviour
         _text.gameObject.SetActive(false);
         gameObject.GetComponent<MeshRenderer>().material = _groundColor;
         chPlatform.ChallengePassed();
+        levelIndicator.Passed();
     }
     private void Failed()
     {

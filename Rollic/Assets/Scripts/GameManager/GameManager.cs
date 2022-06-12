@@ -39,6 +39,7 @@ public class GameManager : MonoBehaviour
         lvlGenerator.RestartLevel();
         isStarting = true;
         startScreen.SetActive(true);
+        completedScreen.SetActive(true);
     }
     public void NextLevel()
     {
@@ -46,6 +47,5 @@ public class GameManager : MonoBehaviour
         lvlGenerator.NextLevel();
         isStarting = true;
         startScreen.SetActive(true);
-        completedScreen.SetActive(false);
     }
 }

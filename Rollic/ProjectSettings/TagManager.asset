@@ -8,6 +8,7 @@ TagManager:
   - Ball
   - FailedScreen
   - CompletedScreen
+  - LevelIndicator
   layers:
   - Default
   - TransparentFX
