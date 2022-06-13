@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
 
     private LevelGenerator lvlGenerator;
     private PlayerMovement playerMovement;
+    private CollectedBalls collectedBalls;
     
     [Header("Screens")]
     public GameObject startScreen;
@@ -28,6 +29,7 @@ public class GameManager : MonoBehaviour
         isStarting = true;
         playerMovement = PlayerMovement.instance;
         lvlGenerator = LevelGenerator.instance;
+        collectedBalls = CollectedBalls.instance;
         playerMovement.Deactivate();
     }
     private void Update()
@@ -48,6 +50,7 @@ public class GameManager : MonoBehaviour
     }
     public void Restart()
     {
+        collectedBalls.ClearCollectedBalls();
         lvlGenerator.RestartLevel();
         isStarting = true;
         startScreen.SetActive(true);
@@ -55,6 +58,7 @@ public class GameManager : MonoBehaviour
     }
     public void NextLevel()
     {
+        collectedBalls.ClearCollectedBalls();
         failedScreen.SetActive(true);
         lvlGenerator.NextLevel();
         isStarting = true;

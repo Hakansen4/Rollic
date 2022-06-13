@@ -662,10 +662,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf8ef2d59ce773b46ba47da95d078f2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levels:
-  - {fileID: 11400000, guid: 84cb2ae7e31cd4e4ea972d1acf47e371, type: 2}
-  - {fileID: 11400000, guid: 31adf04c96443d04dba8c2b9ec03496c, type: 2}
-  - {fileID: 11400000, guid: ec490c8c6e8cbbe4f8cd9fd5f9dbc14b, type: 2}
+  levels: []
 --- !u!114 &382614617
 MonoBehaviour:
   m_ObjectHideFlags: 0

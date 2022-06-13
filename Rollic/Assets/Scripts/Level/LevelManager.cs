@@ -12,6 +12,11 @@ public class LevelManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        Init();
+    }
+    private void Init()
+    {
+        levels = Resources.LoadAll<LevelData>("Levels");
     }
     public LevelData GetLevel(int index)
     {

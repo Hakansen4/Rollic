@@ -41,4 +41,8 @@ public class CollectedBalls : MonoBehaviour
             item.GetComponent<BallController>().Throw();
         }
     }
+    public void ClearCollectedBalls()
+    {
+        Balls.Clear();
+    }
 }
