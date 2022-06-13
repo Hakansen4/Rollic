@@ -4,14 +4,17 @@ using UnityEngine;
 
 public class LevelGenerator : MonoBehaviour
 {
+    public static LevelGenerator instance;
+
     public int ActiveScene;
-    public LevelIndicatorController levelIndicator;
+    private LevelIndicatorController levelIndicator;
     private LevelManager lvlManager;
     private LevelData data;
     public List<BasePlatform> activePlatforms;
     public List<GameObject> activeBalls;
     public Transform player;
     private Saveobjects Save;
+    private int MaxLevelCount = 3;
 
     [Header("Platforms")]
     public BasePlatform StraightPlatform;
@@ -21,12 +24,21 @@ public class LevelGenerator : MonoBehaviour
     [Header("Balls")]
     public GameObject StraightBall;
     public GameObject ArrowHeadBalls;
+    private void Awake()
+    {
+        instance = this;
+    }
     private void Start()
+    {
+        Init();
+    }
+    private void Init()
     {
         Save = SaveManager.Load();
         ActiveScene = Save.Level;
+        levelIndicator = LevelIndicatorController.instance;
         levelIndicator.SetLevel(ActiveScene);
-        lvlManager = GetComponent<LevelManager>();
+        lvlManager = LevelManager.instance;
         data = lvlManager.GetLevel(ActiveScene);
         loadScene();
     }
@@ -122,7 +134,7 @@ public class LevelGenerator : MonoBehaviour
         SaveManager.Save(Save);
         levelIndicator.ResetLevel();
         levelIndicator.SetLevel(ActiveScene);
-        int sceneCount = ActiveScene % 2;
+        int sceneCount = ActiveScene % MaxLevelCount;
         data = lvlManager.GetLevel(sceneCount);
         RemoveAllPlatforms();
         loadScene();

@@ -21,9 +21,12 @@ public class PlatformChallengeController : MonoBehaviour
 
     private void Awake()
     {
+        Init();
+    }
+    private void Init()
+    {
         chPlatform = GetComponentInParent<ChallengePlatform>();
         failedScreen = GameObject.FindGameObjectWithTag("FailedScreen");
-        levelIndicator = GameObject.FindGameObjectWithTag("LevelIndicator").GetComponent<LevelIndicatorController>();
         challengeStarted = false;
         challengeFinished = false;
         timer = 0;
@@ -32,6 +35,7 @@ public class PlatformChallengeController : MonoBehaviour
     }
     private void Start()
     {
+        levelIndicator = LevelIndicatorController.instance;
         failedScreen.SetActive(false);
         WriteText();
     }

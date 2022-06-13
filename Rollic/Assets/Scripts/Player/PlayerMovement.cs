@@ -5,10 +5,16 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public static PlayerMovement instance;
+
     private bool _active;
     private float _forwardSpeed;
     private float _xSpeed;
 
+    private void Awake()
+    {
+        instance = this;
+    }
 
     public void Start()
     {

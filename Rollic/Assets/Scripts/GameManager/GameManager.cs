@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public LevelGenerator lvlGenerator;
-    public PlayerMovement playerMovement;
+    public static GameManager instance;
+
+    private LevelGenerator lvlGenerator;
+    private PlayerMovement playerMovement;
     
     [Header("Screens")]
     public GameObject startScreen;
@@ -15,7 +17,17 @@ public class GameManager : MonoBehaviour
     bool isStarting;
     private void Awake()
     {
+        instance = this;
+    }
+    private void Start()
+    {
+        Init();
+    }
+    private void Init()
+    {
         isStarting = true;
+        playerMovement = PlayerMovement.instance;
+        lvlGenerator = LevelGenerator.instance;
         playerMovement.Deactivate();
     }
     private void Update()

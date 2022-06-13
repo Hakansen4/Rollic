@@ -4,8 +4,14 @@ using UnityEngine;
 
 public class CollectedBalls : MonoBehaviour
 {
+    public static CollectedBalls instance;
+
     public List<GameObject> Balls;
 
+    private void Awake()
+    {
+        instance = this;
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Ball"))

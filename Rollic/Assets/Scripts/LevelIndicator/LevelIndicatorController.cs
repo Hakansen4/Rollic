@@ -6,6 +6,8 @@ using TMPro;
 
 public class LevelIndicatorController : MonoBehaviour
 {
+    public static LevelIndicatorController instance;
+
     [SerializeField] private Image FirstChallege;
     [SerializeField] private Image SecondChallenge;
     [SerializeField] private TextMeshProUGUI CurrentLevel;
@@ -15,7 +17,10 @@ public class LevelIndicatorController : MonoBehaviour
     private Color32 notPassed = new Color32(255, 255, 255, 255);
 
     private int turn = 1;
-
+    private void Awake()
+    {
+        instance = this;
+    }
     public void Passed()
     {
         if (turn == 1)
